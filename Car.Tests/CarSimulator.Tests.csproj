@@ -15,6 +15,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Car\CarSimulator.csproj" />
+    <!--<ProjectReference Include="..\Extensions\Extensions.csproj" />-->
   </ItemGroup>
 
   <ItemGroup>

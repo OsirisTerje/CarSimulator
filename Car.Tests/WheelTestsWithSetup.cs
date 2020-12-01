@@ -6,7 +6,7 @@ namespace CarSimulator.Tests
     {
         private IWheel sut;
 
-        [SetUp]
+        [OneTimeSetUp]
         public void Init()
         {
             // Assume
@@ -16,21 +16,26 @@ namespace CarSimulator.Tests
         [Test]
         public void CheckCoefficient_LowSpeed()
         {
+            Assert.That(sut.CurrentSpeed, Is.EqualTo(0));
             // Act
             var coef = sut.RollingResistanceCoefficient(20);
 
             // Assert
             Assert.That(coef, Is.GreaterThan(0.005).And.LessThan(0.015), "Coefficient wrong");
+            
+
         }
 
         [Test]
         public void CheckCoefficient_HighSpeed()
         {
+            Assert.That(sut.CurrentSpeed, Is.EqualTo(0));
             // Act
             var coef = sut.RollingResistanceCoefficient(100);
 
             // Assert
             Assert.That(coef, Is.GreaterThan(0.01).And.LessThan(0.02), "Coefficient wrong");
+          
         }
     }
 }

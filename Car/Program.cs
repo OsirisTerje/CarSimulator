@@ -25,6 +25,8 @@ namespace CarSimulator
         /// </summary>
         double Pressure { get; set; }
 
+        double CurrentSpeed { get; }
+
         double Force(double torque);
 
         /// <summary>

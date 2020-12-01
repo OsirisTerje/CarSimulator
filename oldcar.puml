@@ -1,0 +1,10 @@
+@startuml
+
+Car o-- Engine
+Car o-- Gearbox
+Car o-- Wheel
+
+
+
+
+@enduml

@@ -1,0 +1,19 @@
+@startuml
+
+
+interface IEngine
+interface IGearbox
+interface IWheel
+
+Car o-- IEngine
+Car o-- IGearbox
+Car o-- IWheel
+
+IEngine <|-- Engine
+IGearbox <|-- Gearbox
+IWheel <|-- Wheel
+
+
+
+
+@enduml

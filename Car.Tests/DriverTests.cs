@@ -28,13 +28,7 @@ namespace CarSimulator.Tests
             });
 
         }
-
-        [Test]
-        public void ThatWrongPidsThrowException()
-        {
-            Assert.Throws<ArgumentException>(() => Driver.CreateDriver("12345698765", "John", "Doe"));
-        }
-
+        
         [Test]
         public void ThatNoOfYearsDrivingExperienceIsCorrect()
         {
@@ -44,6 +38,15 @@ namespace CarSimulator.Tests
             var result = sut.NoOfYearsDrivingExperience;
 
             Assert.That(result, Is.EqualTo(42));
+        }
+
+        /// <summary>
+        /// This is a negative test
+        /// </summary>
+        [Test]
+        public void ThatWrongPidsThrowException()
+        {
+            Assert.Throws<ArgumentException>(() => Driver.CreateDriver("12345698765", "John", "Doe"));
         }
     }
 }

@@ -4,7 +4,7 @@
     {
         private const double g = 9.81;
         public IWheel Wheel { get; }
-        private readonly double weight;
+        public double Weight { get; }
         private readonly IEngine engine;
         private readonly IGearTransmissionBox gearbox;
 
@@ -14,7 +14,7 @@
         public Car(double weight, IEngine engine, IGearTransmissionBox gearbox,  IWheel wheel)
         {
             Wheel = wheel;
-            this.weight = weight;
+            Weight = weight;
             this.engine = engine;
             this.gearbox = gearbox;
         }
@@ -27,7 +27,7 @@
         public double PowerRequiredForConstantSpeed(double speed)
         {
             var metricSpeed = ConvertKmHToSi(speed);
-            return (Wheel.RollingResistanceForce(speed,weight) + AerodynamicResistanceForce) * metricSpeed / gearbox.Efficiency;
+            return (Wheel.RollingResistanceForce(speed,Weight) + AerodynamicResistanceForce) * metricSpeed / gearbox.Efficiency;
         }
 
         public double ConvertKmHToSi(double speedInKmPerH) => speedInKmPerH / 3.6;

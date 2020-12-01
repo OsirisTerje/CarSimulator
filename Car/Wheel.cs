@@ -26,7 +26,13 @@ namespace CarSimulator
         /// </summary>
         /// <param name="speed">velocity (km/h)</param>
         /// <returns></returns>
-        public double RollingResistanceCoefficient(double speed) => 0.005 + 1/Pressure*(0.01+0.0095*Math.Pow(speed/100,2));
+        public double RollingResistanceCoefficient(double speed)
+        {
+            CurrentSpeed = speed;
+            return 0.005 + 1 / Pressure * (0.01 + 0.0095 * Math.Pow(speed / 100, 2));
+        }
+
+        public double CurrentSpeed { get; private set; }
 
         /// <summary>
         /// Speed, in km/h

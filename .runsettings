@@ -79,7 +79,7 @@
       <InternalTraceLevel>Off</InternalTraceLevel>
       <!--<RandomSeed>1234567</RandomSeed>-->
       <NumberOfTestWorkers>-1</NumberOfTestWorkers>
-      <Verbosity>0</Verbosity>
+      <Verbosity>1</Verbosity>
       <!--<UseVsKeepEngineRunning>false</UseVsKeepEngineRunning>-->
       <!--<ShadowCopyFiles>false</ShadowCopyFiles>-->
       <!--<DefaultTestNamePattern>{m}{a}</DefaultTestNamePattern>-->

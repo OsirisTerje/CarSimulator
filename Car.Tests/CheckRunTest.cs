@@ -11,7 +11,7 @@ namespace CarSimulator
         public void CheckIt()
         {
             var webAppUrl = TestContext.Parameters["webAppUrl"];
+            Assert.That(webAppUrl, Is.EqualTo("http://localhost"));
         }
-
     }
 }

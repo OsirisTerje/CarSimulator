@@ -1,97 +1,50 @@
 ﻿using System;
 
-namespace Car
+namespace CarSimulator
 {
     class Program
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
-            var car = new Car(1000, 200);
+            Console.WriteLine("Car Simulator");
+            var wheel = new Wheel(18 * 2.54 / 2) {Pressure = 2.5};
+            var engine = new Engine(200);
+            var gearbox = new GearTransmissionBox(0.9);
+            var car = new Car(2000, engine,gearbox,wheel);
             
         }
     }
 
 
-
-    public class Car
+    public interface IWheel
     {
-        private readonly double weight;
-        private readonly double power;
+        double Radius { get; }
 
-        private const double RollingResistanceForce = 400;  // N
-        private const double AerodynamicResistanceForce = 250;  // N
-        private const double Efficiency = 0.95;
+        /// <summary>
+        /// tire pressure (bar)
+        /// </summary>
+        double Pressure { get; set; }
 
-        public Car(double weight, double power)
-        {
-            this.weight = weight;
-            this.power = power;
-        }
+        double Force(double torque);
 
-        public double PowerRequiredForConstantSpeed(double speed)
-        {
-            return (RollingResistanceForce + AerodynamicResistanceForce) * speed / Efficiency;
-        }
+        /// <summary>
+        /// From https://www.engineeringtoolbox.com/rolling-friction-resistance-d_1303.html
+        /// </summary>
+        /// <param name="speed">velocity (km/h)</param>
+        /// <returns></returns>
+        double RollingResistanceCoefficient(double speed);
 
-        public void Start()
-        {
-
-        }
-
-        public void Stop()
-        {
-
-        }
-
-        public void AccelerateTo(double speed)
-        {
-
-        }
-
-        public double CurrentSpeed { get; private set; }
+        double RollingResistanceForce(double speed,double weight);
     }
 
-    public class Wheel
+    public interface IEngine
     {
-        private readonly double radius;
-
-        public Wheel(double radius)
-        {
-            this.radius = radius;
-        }
-
-        public double Force(double torque)
-        {
-            return torque / radius;
-        }
-        
+        double Torque(double rps, double power);
     }
 
-    public class Engine
+    public interface IGearTransmissionBox
     {
-        private readonly double power;
-
-        public Engine(double power)
-        {
-            this.power = power;
-        }
-
-                
-    }
-
-    public class GearTransmissionBox
-    {
-        private readonly double gearRatio;
-
-        public GearTransmissionBox(double gearRatio)
-        {
-            this.gearRatio = gearRatio;
-        }
-
-        public double OutputTorque(double engineTorque)
-        {
-            return engineTorque / gearRatio;
-        }
+        double Efficiency { get; set; }
+        double OutputTorque(double engineTorque);
     }
 }

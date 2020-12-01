@@ -50,7 +50,7 @@ namespace CarSimulator.Tests
         /// <summary>
         /// Alternate path
         /// </summary>
-       // [Test]
+        [Test]
         public void ThatTorqueIsFixedForHighPower()
         {
             var sut = new Engine(200);

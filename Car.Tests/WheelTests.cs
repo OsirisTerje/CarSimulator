@@ -11,7 +11,7 @@ namespace CarSimulator.Tests
         {
             // Assume
             var sut = new Wheel(18 * 2.54 / 2) {Pressure = 2.0};
-
+            
             // Act
             var coef = sut.RollingResistanceCoefficient(20);
 

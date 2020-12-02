@@ -6,7 +6,7 @@ namespace CarSimulator.Tests
     {
         private IWheel sut;
 
-        [OneTimeSetUp]
+        [SetUp]
         public void Init()
         {
             // Assume
@@ -39,3 +39,5 @@ namespace CarSimulator.Tests
         }
     }
 }
+
+// Assert.That(sut.CurrentSpeed, Is.EqualTo(0));

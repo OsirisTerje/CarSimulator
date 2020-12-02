@@ -6,29 +6,28 @@ using System.Text;
 
 namespace CarSimulator.Tests
 {
-    
+
     public class DriverTests
     {
         [Test]
         public void CreateDriverTest()
         {
             var sut = Driver.CreateDriver("01020398767", "John", "Doe");
-            
+
             Assert.That(sut, Is.Not.Null, "Could not create driver");
 
-            Assert.Multiple(() =>
-            {
-                Assert.That(sut.GivenName, Is.EqualTo("John"));
-                Assert.That(sut.LastName, Is.EqualTo("Doe"));
-                Assert.That(sut.Pid, Is.EqualTo("01020398767"));
-                Assert.That(sut.StartDrivingYear, Is.EqualTo(DateTime.Now.Year));
 
-                Assert.That(sut.FullName, Is.EqualTo("John Doe"));
-                Assert.That(sut.NoOfYearsDrivingExperience, Is.EqualTo(0));
-            });
+            Assert.That(sut.GivenName, Is.EqualTo("John"));
+            Assert.That(sut.LastName, Is.EqualTo("Doe"));
+            Assert.That(sut.Pid, Is.EqualTo("01020398767"));
+            Assert.That(sut.StartDrivingYear, Is.EqualTo(DateTime.Now.Year));
+
+            Assert.That(sut.FullName, Is.EqualTo("John Doe"));
+            Assert.That(sut.NoOfYearsDrivingExperience, Is.EqualTo(0));
+
 
         }
-        
+
         [Test]
         public void ThatNoOfYearsDrivingExperienceIsCorrect()
         {
@@ -40,6 +39,21 @@ namespace CarSimulator.Tests
             Assert.That(result, Is.EqualTo(42));
         }
 
+
+
+
+
+        /// <summary>
+        /// This is a positive test
+        /// </summary>
+        [Test]
+        public void CheckPid()
+        {
+            var sut = Driver.CreateDriver("01020398767", "John", "Doe");
+            Assert.That(sut.Pid, Is.EqualTo("01020398767"));
+        }
+
+
         /// <summary>
         /// This is a negative test
         /// </summary>
@@ -50,3 +64,9 @@ namespace CarSimulator.Tests
         }
     }
 }
+
+
+
+// Assert.Multiple(() =>
+// {
+//  });

@@ -17,10 +17,13 @@ namespace CarSimulator.Tests
         [Test]
         public void ThatTorqueCanBeCalculated()
         {
+            // Assume
             var sut = new Engine(200);
 
+            // Act
             var result = sut.Torque(1500, 19.118);
 
+            // Assert
             Assert.That(result, Is.EqualTo(121).Within(1.0));
            
 
@@ -31,9 +34,14 @@ namespace CarSimulator.Tests
         public void ThatTorqueVariesWithRpm()
         {
             var sut = new Engine(200);
+
+            // act
             var t1 = sut.Torque(100, 100);
             var t2 = sut.Torque(200, 100);
+
+            //assert
             var diff = t1 / t2;
+
             Assert.That(diff, Is.EqualTo(2).Within(0.1));
             
         }
